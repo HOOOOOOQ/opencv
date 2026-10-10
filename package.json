@@ -1,0 +1,10 @@
+{
+  "name": "absensi-kamera-kelompok1",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ABSENSI KAMERA BY KELOMPOK 1 SMK AL MADANI GARUT - pengenalan wajah di browser",
+  "scripts": {
+    "dev": "npx --yes serve public -l 3000",
+    "start": "npx --yes serve public -l 3000"
+  }
+}
