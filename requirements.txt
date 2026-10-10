@@ -1,0 +1,6 @@
+# OpenCV 4.10+ menyediakan wheel pre-built untuk Python 3.10 s/d 3.14
+# dan kompatibel dengan NumPy 2.x
+opencv-contrib-python-headless>=4.10.0,<6.0.0
+numpy>=1.26.0
+Flask>=3.0.0
+flask-sock>=0.7.0

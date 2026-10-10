@@ -1,0 +1,18 @@
+percobaan java.util.Scanner;
+
+public class percobaan {
+    public static void main(String[]args){
+        
+        String nama,alamat;
+        int usia,gaji;
+        
+        Scanner input = new Scanner (System.in);
+        
+        System.out.println("### pendapatan karyawan##");
+        System.out.print("nama karyawan: ");
+        
+        nama = input.nextline();
+        
+    }
+    
+}

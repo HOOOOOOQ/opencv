@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Hasil buatan program (foto wajah, model, catatan kehadiran)
+dataset/*
+!dataset/.gitkeep
+trainer/*
+!trainer/.gitkeep
+attendance/*
+!attendance/.gitkeep
+
+# Folder unduhan/pencarian gambar sementara
+image-search/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/!.vscode/launch.json
