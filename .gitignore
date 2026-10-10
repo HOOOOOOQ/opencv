@@ -21,3 +21,7 @@ image-search/
 .DS_Store
 Thumbs.db
 .vscode/!.vscode/launch.json
+
+# Node
+node_modules/
+.vercel/

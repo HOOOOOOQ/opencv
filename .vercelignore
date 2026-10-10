@@ -1,0 +1,9 @@
+*.py
+requirements.txt
+percobaan
+dataset
+trainer
+attendance
+cascades
+.venv
+__pycache__

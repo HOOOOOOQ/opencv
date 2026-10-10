@@ -1,0 +1,11 @@
+{
+  "name": "ABSENSI KAMERA BY KELOMPOK 1 SMK AL MADANI GARUT",
+  "short_name": "Absensi Kamera",
+  "description": "Absensi otomatis dengan pengenalan wajah di browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "lang": "id",
+  "icons": [{ "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
