@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Project — Absensi Kamera · Kelompok 1 SMK Al Madani Garut</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020; --card: rgba(255,255,255,.05); --border: rgba(255,255,255,.1);
+      --text: #e8ecf7; --muted: #94a0bf; --p1: #6c8cff; --p2: #8b5cf6; --acc: #22d3ee; --ok: #22c55e; --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: var(--text); background: var(--bg);
+      background-image: radial-gradient(900px 500px at 10% -10%, rgba(108,140,255,.25), transparent 60%),
+                        radial-gradient(800px 500px at 100% 0%, rgba(139,92,246,.2), transparent 60%);
+      background-attachment: fixed; line-height: 1.65;
+    }
+    a { color: var(--acc); text-decoration: none; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    /* Header */
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; color: inherit; }
+    .brand img { width: 42px; height: 42px; border-radius: 12px; }
+    .brand strong { display: block; letter-spacing: .06em; font-size: 14px; }
+    .brand small { color: var(--muted); font-size: 11px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 14px; color: #fff;
+           background: linear-gradient(135deg, var(--p1), var(--p2)); box-shadow: 0 12px 28px -12px rgba(108,140,255,.9); transition: .25s; }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Hero */
+    .hero { text-align: center; margin-bottom: 48px; }
+    .hero .pill { display: inline-block; padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; background: var(--card); border: 1px solid var(--border); margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; font-weight: 800; letter-spacing: -.02em; }
+    .grad { background: linear-gradient(90deg, var(--p1), var(--p2), var(--acc)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { color: var(--muted); max-width: 640px; margin: 0 auto; font-size: 16px; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 36px; }
+    .timeline::before { content: ''; position: absolute; left: 13px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--p1), var(--p2), var(--acc)); border-radius: 2px; }
+    .step { position: relative; margin-bottom: 28px; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 22px 24px; backdrop-filter: blur(12px); }
+    .step::before { content: attr(data-n); position: absolute; left: -36px; top: 22px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+                    font-size: 12px; font-weight: 800; color: #fff; background: linear-gradient(135deg, var(--p1), var(--p2)); box-shadow: 0 0 0 4px var(--bg); }
+    .step h2 { margin: 0 0 6px; font-size: 20px; font-weight: 800; }
+    .step .sub { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+    .step p { margin: 10px 0; }
+    .step ul, .step ol { margin: 8px 0; padding-left: 20px; }
+    .step li { margin: 4px 0; }
+
+    /* Elements */
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; margin: 2px 4px 2px 0; border: 1px solid var(--border); background: rgba(255,255,255,.06); }
+    .tag.ok { color: var(--ok); border-color: rgba(34,197,94,.4); background: rgba(34,197,94,.1); }
+    .tag.warn { color: var(--warn); border-color: rgba(245,158,11,.4); background: rgba(245,158,11,.1); }
+    .tag.bad { color: #ef4444; border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.1); }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: 13px; background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 6px; }
+    pre { background: #05070f; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; overflow: auto; font-size: 13px; line-height: 1.55; }
+    pre code { background: none; padding: 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 12px 0; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 14px 0; }
+    .mini { background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    .mini b { display: block; margin-bottom: 4px; }
+    .mini span { color: var(--muted); font-size: 13px; }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 14px 0; }
+    .flow .box { padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; background: rgba(108,140,255,.15); border: 1px solid rgba(108,140,255,.4); }
+    .flow .arr { color: var(--muted); }
+    .quote { border-left: 4px solid var(--p1); padding: 12px 18px; margin: 18px 0 0; background: rgba(108,140,255,.08); border-radius: 0 12px 12px 0; font-style: italic; }
+    .foot { text-align: center; color: var(--muted); font-size: 13px; margin-top: 48px; }
+    @media (max-width: 600px) { .timeline { padding-left: 30px; } .step { padding: 18px; } .step::before { left: -30px; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="index.html">
+      <img src="assets/favicon.svg" alt="" />
+      <span><strong>ABSENSI KAMERA</strong><small>Kelompok 1 · SMK Al Madani Garut</small></span>
+    </a>
+    <a class="btn" href="index.html#absensi">▶ Buka Aplikasi</a>
+  </header>
+
+  <section class="hero">
+    <span class="pill">📘 Dokumentasi Project</span>
+    <h1>Dari <span class="grad">Ide</span> sampai <span class="grad">Web Online</span></h1>
+    <p>Penjelasan lengkap bagaimana sistem absensi wajah ini dibuat, cara kerjanya, dan bagaimana ia bisa diakses publik di <a href="https://opencv-alpha.vercel.app">opencv-alpha.vercel.app</a>.</p>
+  </section>
+
+  <div class="timeline">
+
+    <article class="step" data-n="1">
+      <h2>Latar Belakang &amp; Masalah Awal</h2>
+      <p class="sub">Project awal: Python + OpenCV (LBPH) di desktop</p>
+      <p>Versi pertama berupa program Python (<code>absen.py</code>, <code>face_engine.py</code>) yang membuka kamera lewat jendela OpenCV. Masalahnya:</p>
+      <ul>
+        <li><span class="tag bad">✕</span> Butuh server Python yang terus hidup → <b>tidak bisa</b> di-hosting di Vercel.</li>
+        <li><span class="tag bad">✕</span> Hanya jalan di komputer yang terpasang Python.</li>
+        <li><span class="tag bad">✕</span> Tampilan belum modern, belum ada splash loading.</li>
+      </ul>
+      <p><b>Keputusan:</b> bangun ulang agar <b>100% berjalan di browser</b> — tanpa server — supaya bisa dibuka dari HP mana saja.</p>
+    </article>
+
+    <article class="step" data-n="2">
+      <h2>Pemilihan Teknologi</h2>
+      <p class="sub">Semua berbasis web standar, tanpa framework berat</p>
+      <table>
+        <tr><th>Kebutuhan</th><th>Teknologi</th><th>Alasan</th></tr>
+        <tr><td>Pengenalan wajah</td><td><b>face-api.js</b> (TensorFlow.js)</td><td>AI jalan di browser, akurat</td></tr>
+        <tr><td>Tampilan</td><td>HTML + CSS + JavaScript</td><td>Ringan, tanpa build</td></tr>
+        <tr><td>Penyimpanan</td><td><code>localStorage</code></td><td>Tanpa database, privasi aman</td></tr>
+        <tr><td>Kamera</td><td>MediaDevices API</td><td>Bawaan browser (butuh HTTPS)</td></tr>
+        <tr><td>Suara</td><td>Web Speech API</td><td>Pengumuman nama otomatis</td></tr>
+        <tr><td>Hosting</td><td><b>Vercel</b></td><td>Gratis, HTTPS otomatis, custom domain</td></tr>
+      </table>
+    </article>
+
+    <article class="step" data-n="3">
+      <h2>Struktur Project</h2>
+      <p class="sub">Folder <code>public/</code> adalah yang di-deploy</p>
+<pre><code>public/
+├── index.html            halaman utama (4 menu)
+├── tentang.html          halaman ini
+├── styles.css            desain modern (glassmorphism, dark/light)
+├── app.js                seluruh logika aplikasi
+├── manifest.webmanifest  bisa "Add to Home Screen"
+├── assets/favicon.svg
+└── vendor/
+    ├── face-api.js       library AI
+    └── models/           3 model AI (±7 MB, dibundel lokal)
+vercel.json               konfigurasi hosting</code></pre>
+    </article>
+
+    <article class="step" data-n="4">
+      <h2>Splash Loading</h2>
+      <p class="sub">Layar pembuka sambil memuat model AI</p>
+      <p>Saat web dibuka, tampil logo + judul + progress bar. Di balik layar, 3 model dimuat berurutan:</p>
+      <div class="grid">
+        <div class="mini"><b>① Tiny Face Detector</b><span>Menemukan posisi wajah di gambar</span></div>
+        <div class="mini"><b>② Landmark 68 (tiny)</b><span>Titik mata, hidung, mulut — untuk meluruskan wajah</span></div>
+        <div class="mini"><b>③ Face Recognition</b><span>Mengubah wajah jadi <b>128 angka</b> (descriptor)</span></div>
+      </div>
+      <p>Setelah 100% → splash menghilang dengan animasi dan dashboard tampil.</p>
+    </article>
+
+    <article class="step" data-n="5">
+      <h2>Daftar Wajah</h2>
+      <p class="sub">Merekam identitas wajah ke perangkat</p>
+      <div class="flow">
+        <span class="box">Isi nama &amp; kelas</span><span class="arr">→</span>
+        <span class="box">Kamera nyala</span><span class="arr">→</span>
+        <span class="box">Deteksi wajah</span><span class="arr">→</span>
+        <span class="box">Ambil 15 sampel</span><span class="arr">→</span>
+        <span class="box">Simpan ke localStorage</span>
+      </div>
+      <ul>
+        <li><span class="tag warn">kuning</span> wajah terlalu jauh → "Dekatkan wajah".</li>
+        <li><span class="tag ok">hijau</span> oke → tiap ±0,35 detik 1 sampel disimpan (ada efek kilat &amp; progress bar).</li>
+        <li>Disimpan: <code>{ nama, kelas, 15 descriptor, foto thumbnail }</code>.</li>
+      </ul>
+    </article>
+
+    <article class="step" data-n="6">
+      <h2>Absensi Otomatis</h2>
+      <p class="sub">Inti sistem — mengenali &amp; mencatat</p>
+      <ol>
+        <li>Setiap frame kamera → semua wajah dideteksi → dihitung descriptor-nya.</li>
+        <li>Dibandingkan dengan data terdaftar memakai <b>jarak Euclidean</b> (ambang <code>0.5</code>). Makin kecil jarak, makin mirip.</li>
+        <li>Agar tidak salah kenal, nama harus konsisten <b>3 frame berturut-turut</b> → status <span class="tag warn">Memastikan</span>.</li>
+        <li>Cocok → <span class="tag ok">kotak hijau</span>, dicatat <b>sekali per hari</b>, bunyi <i>beep</i>, notifikasi, dan suara <b>"Nama, terabsen"</b>.</li>
+        <li>Tidak terdaftar → <span class="tag bad">Tidak dikenal</span>.</li>
+      </ol>
+    </article>
+
+    <article class="step" data-n="7">
+      <h2>Dashboard &amp; Rekap Kehadiran</h2>
+      <p class="sub">Melihat dan mengekspor data</p>
+      <div class="grid">
+        <div class="mini"><b>📊 Dashboard</b><span>Jumlah terdaftar, hadir hari ini (+%), belum hadir, feed kehadiran terbaru</span></div>
+        <div class="mini"><b>📄 Rekap</b><span>Filter per tanggal, cari nama, status Hadir / Terlambat (lewat 07:30)</span></div>
+        <div class="mini"><b>⬇️ Unduh CSV</b><span>Bisa dibuka di Excel / Google Sheets</span></div>
+        <div class="mini"><b>🎨 Lainnya</b><span>Dark/light mode, jam real-time, ganti kamera depan/belakang, responsive HP</span></div>
+      </div>
+    </article>
+
+    <article class="step" data-n="8">
+      <h2>Konfigurasi Vercel</h2>
+      <p class="sub">File <code>vercel.json</code></p>
+<pre><code>{
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "headers": [
+    { "source": "/(.*)",
+      "headers": [{ "key": "Permissions-Policy", "value": "camera=(self)" }] },
+    { "source": "/vendor/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+  ]
+}</code></pre>
+      <ul>
+        <li>Memberi tahu Vercel: tidak perlu <i>build</i>, cukup sajikan folder <code>public</code>.</li>
+        <li>Mengizinkan akses kamera &amp; menyimpan cache model agar loading berikutnya cepat.</li>
+      </ul>
+    </article>
+
+    <article class="step" data-n="9">
+      <h2>Deploy ke Vercel</h2>
+      <p class="sub">Dari GitHub → online dalam hitungan menit</p>
+      <div class="flow">
+        <span class="box">Push ke GitHub</span><span class="arr">→</span>
+        <span class="box">Import di Vercel</span><span class="arr">→</span>
+        <span class="box">Vercel baca vercel.json</span><span class="arr">→</span>
+        <span class="box">HTTPS otomatis</span><span class="arr">→</span>
+        <span class="box">🌐 Online</span>
+      </div>
+      <p>Bisa lewat website <a href="https://vercel.com/new">vercel.com/new</a> atau dari <b>Termux</b>:</p>
+<pre><code>pkg install nodejs-lts git -y
+npm i -g vercel
+git clone https://github.com/HOOOOOOQ/opencv.git &amp;&amp; cd opencv
+vercel login
+vercel --prod</code></pre>
+      <p>Hasil: <a href="https://opencv-alpha.vercel.app"><b>https://opencv-alpha.vercel.app</b></a> ✅</p>
+    </article>
+
+    <article class="step" data-n="10">
+      <h2>Subdomain Sendiri</h2>
+      <p class="sub">kel2.pallrzki.my.id</p>
+      <ol>
+        <li>Vercel → <b>Settings → Domains</b> → tambah <code>kel2.pallrzki.my.id</code>.</li>
+        <li>Di DNS <code>pallrzki.my.id</code> tambahkan record:</li>
+      </ol>
+      <table>
+        <tr><th>Type</th><th>Name</th><th>Value</th></tr>
+        <tr><td>CNAME</td><td><code>kel2</code></td><td><code>cname.vercel-dns.com</code></td></tr>
+      </table>
+      <p>Tunggu propagasi DNS → web bisa dibuka di <code>https://kel2.pallrzki.my.id</code>.</p>
+    </article>
+
+  </div>
+
+  <div class="quote">
+    "Kami mengubah sistem absensi OpenCV berbasis Python menjadi web modern yang menjalankan AI pengenalan wajah langsung di browser, menyimpan data di perangkat, dan meng-hosting-nya gratis di Vercel sehingga bisa diakses dari HP mana saja lewat HTTPS."
+  </div>
+
+  <p class="foot">© Kelompok 1 · SMK Al Madani Garut · <a href="index.html">Kembali ke aplikasi</a></p>
+</div>
+</body>
+</html>
