@@ -57,6 +57,7 @@
         <a href="#daftar" data-page="daftar" class="nav-link">Daftar Wajah</a>
         <a href="#absensi" data-page="absensi" class="nav-link">Absensi</a>
         <a href="#kehadiran" data-page="kehadiran" class="nav-link">Kehadiran</a>
+        <a href="#tentang" data-page="tentang" class="nav-link">Tentang</a>
       </nav>
 
       <div class="topbar-actions">
@@ -276,11 +277,190 @@
         </div>
       </section>
 
+
+      <!-- ---------- TENTANG ---------- -->
+      <section class="page" id="page-tentang">
+        <div class="about-hero">
+          <span class="pill">📘 Dokumentasi Project</span>
+          <h2>Dari <span class="grad">Nol</span> sampai <span class="grad">Web Online</span></h2>
+          <p>Perjalanan Kelompok 1 membangun Absensi Kamera — mulai dari mencari ide, ngoding di VS Code, sampai bisa diakses publik di <a href="https://opencv-alpha.vercel.app" target="_blank" rel="noopener">opencv-alpha.vercel.app</a>.</p>
+          <div class="about-stats">
+            <div><strong>11</strong><span>Tahap</span></div>
+            <div><strong>3</strong><span>Model AI</span></div>
+            <div><strong>0</strong><span>Server</span></div>
+            <div><strong>100%</strong><span>di Browser</span></div>
+          </div>
+        </div>
+
+        <div class="timeline">
+
+          <article class="tl-step" data-n="1">
+            <div class="tl-icon">💡</div>
+            <h3>Mencari Ide</h3>
+            <p class="tl-sub">Mengamati masalah di sekolah</p>
+            <p>Absensi manual lambat, bisa "titip absen", dan rekapnya harus diketik ulang. Kelompok membandingkan beberapa ide:</p>
+            <div class="table-wrap"><table class="table mini-table">
+              <thead><tr><th>Ide</th><th>Kelebihan</th><th>Kekurangan</th></tr></thead>
+              <tbody>
+                <tr><td>Absen QR code</td><td>Mudah</td><td>Bisa difoto &amp; dititipkan</td></tr>
+                <tr><td>Absen sidik jari</td><td>Akurat</td><td>Butuh alat khusus, mahal</td></tr>
+                <tr><td><strong>Absen wajah via kamera</strong> <span class="badge ok">dipilih</span></td><td>Tidak bisa dititipkan, cukup HP</td><td>Perlu belajar AI</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Target:</strong> daftar wajah → absen otomatis → rekap bisa diunduh → bisa diakses dari HP.</p>
+          </article>
+
+          <article class="tl-step" data-n="2">
+            <div class="tl-icon">📚</div>
+            <h3>Riset &amp; Belajar</h3>
+            <p class="tl-sub">Sebelum ngoding, cari tahu dulu</p>
+            <ul>
+              <li><strong>Cara komputer mengenali wajah:</strong> deteksi posisi wajah → ubah jadi angka (descriptor) → bandingkan jaraknya.</li>
+              <li><strong>Library:</strong> OpenCV (Python) untuk prototipe, <strong>face-api.js</strong> (JavaScript) untuk versi web.</li>
+              <li><strong>Hosting gratis:</strong> Vercel, Netlify, GitHub Pages → dipilih <strong>Vercel</strong>.</li>
+              <li>Sumber belajar: YouTube, dokumentasi resmi, dan asisten AI.</li>
+            </ul>
+          </article>
+
+          <article class="tl-step" data-n="3">
+            <div class="tl-icon">🛠️</div>
+            <h3>Menyiapkan Alat</h3>
+            <p class="tl-sub">Setup perangkat kerja</p>
+            <div class="chips">
+              <span class="chip">VS Code</span><span class="chip">Ekstensi Live Server</span><span class="chip">Prettier</span><span class="chip">Git</span><span class="chip">Akun GitHub</span><span class="chip">Akun Vercel</span><span class="chip">Python</span><span class="chip">Node.js</span><span class="chip">Termux (HP)</span>
+            </div>
+          </article>
+
+          <article class="tl-step" data-n="4">
+            <div class="tl-icon">🐍</div>
+            <h3>Prototipe Awal: Python + OpenCV</h3>
+            <p class="tl-sub">Versi pertama di laptop</p>
+            <pre><code>capture_faces.py   → ambil 50 foto wajah dari webcam
+train_model.py     → latih model LBPH dari foto
+absen.py           → kenali wajah, tulis ke CSV</code></pre>
+            <p>Dijalankan lewat terminal VS Code: <code>pip install -r requirements.txt</code> lalu <code>python absen.py</code>. Wajah anggota dikenali ✅.</p>
+            <p class="callout warn">⚠️ <strong>Masalah:</strong> hanya jalan di laptop ber-Python, tidak bisa dibuka dari HP, dan tidak bisa di-hosting di Vercel (butuh server hidup terus). → <strong>Pindah ke web!</strong></p>
+          </article>
+
+          <article class="tl-step" data-n="5">
+            <div class="tl-icon">🎨</div>
+            <h3>Desain Tampilan (UI/UX)</h3>
+            <p class="tl-sub">Sketsa dulu sebelum ngoding</p>
+            <div class="grid-mini">
+              <div class="mini"><b>Splash</b><span>Logo + judul + progress bar</span></div>
+              <div class="mini"><b>Beranda</b><span>Statistik &amp; kehadiran terbaru</span></div>
+              <div class="mini"><b>Daftar Wajah</b><span>Kamera + form nama</span></div>
+              <div class="mini"><b>Absensi</b><span>Kamera besar + hadir hari ini</span></div>
+              <div class="mini"><b>Kehadiran</b><span>Tabel + unduh CSV</span></div>
+              <div class="mini"><b>Gaya</b><span>Glassmorphism, gradient, dark/light, responsive</span></div>
+            </div>
+          </article>
+
+          <article class="tl-step" data-n="6">
+            <div class="tl-icon">💻</div>
+            <h3>Coding Web di VS Code</h3>
+            <p class="tl-sub">HTML + CSS + JavaScript + face-api.js</p>
+            <ol>
+              <li><code>index.html</code> — kerangka: splash, navbar, 5 halaman, footer.</li>
+              <li><code>styles.css</code> — variabel warna, grid, animasi, media query HP.</li>
+              <li>Unduh <code>face-api.js</code> + 3 model ke <code>vendor/</code> (tidak bergantung CDN).</li>
+              <li><code>app.js</code> — splash &amp; muat model → routing → kamera → daftar wajah (15 sampel) → absensi (FaceMatcher, konfirmasi 3 frame, suara) → rekap &amp; CSV → tema &amp; notifikasi.</li>
+              <li>Tes langsung dengan <em>Live Server</em> di <code>http://127.0.0.1:5500</code>.</li>
+            </ol>
+            <div class="flow">
+              <span class="box">Deteksi wajah</span><span class="arr">→</span>
+              <span class="box">Landmark 68</span><span class="arr">→</span>
+              <span class="box">Descriptor 128 angka</span><span class="arr">→</span>
+              <span class="box">Bandingkan (jarak &lt; 0.5)</span><span class="arr">→</span>
+              <span class="box">Tercatat ✅</span>
+            </div>
+          </article>
+
+          <article class="tl-step" data-n="7">
+            <div class="tl-icon">🧪</div>
+            <h3>Pengujian</h3>
+            <p class="tl-sub">Coba, temukan bug, perbaiki</p>
+            <div class="table-wrap"><table class="table mini-table">
+              <thead><tr><th>Uji</th><th>Masalah</th><th>Perbaikan</th></tr></thead>
+              <tbody>
+                <tr><td>Wajah jauh</td><td>Tidak terdeteksi</td><td>Peringatan "Dekatkan wajah"</td></tr>
+                <tr><td>Orang lain</td><td>Salah kenal</td><td>Ambang 0.5 + konfirmasi 3 frame</td></tr>
+                <tr><td>Absen berulang</td><td>Duplikat</td><td>Cek sudah absen hari ini</td></tr>
+                <tr><td>Buka dari HP via IP</td><td>Kamera ditolak</td><td>Wajib HTTPS → hosting Vercel</td></tr>
+                <tr><td>Layar HP</td><td>Berantakan</td><td>Media query responsive</td></tr>
+              </tbody>
+            </table></div>
+          </article>
+
+          <article class="tl-step" data-n="8">
+            <div class="tl-icon">🐙</div>
+            <h3>Simpan ke GitHub</h3>
+            <p class="tl-sub">Terminal VS Code (Ctrl + `)</p>
+            <pre><code>git init
+git add .
+git commit -m "Absensi Kamera versi web"
+git branch -M main
+git remote add origin https://github.com/HOOOOOOQ/opencv.git
+git push -u origin main</code></pre>
+          </article>
+
+          <article class="tl-step" data-n="9">
+            <div class="tl-icon">☁️</div>
+            <h3>Deploy ke Vercel</h3>
+            <p class="tl-sub">Dari GitHub → online dalam hitungan menit</p>
+            <p>Buat <code>vercel.json</code> (sajikan folder <code>public</code>, izinkan kamera, cache model). Lalu <strong>vercel.com/new</strong> → Import repo → Framework <em>Other</em> → Deploy. Atau dari <strong>Termux</strong>:</p>
+            <pre><code>pkg install nodejs-lts git -y
+npm i -g vercel
+git clone https://github.com/HOOOOOOQ/opencv.git &amp;&amp; cd opencv
+vercel login
+vercel --prod</code></pre>
+            <p class="callout ok">✅ Hasil: <a href="https://opencv-alpha.vercel.app" target="_blank" rel="noopener"><strong>https://opencv-alpha.vercel.app</strong></a> — HTTPS otomatis, kamera jalan di HP.</p>
+          </article>
+
+          <article class="tl-step" data-n="10">
+            <div class="tl-icon">🌐</div>
+            <h3>Subdomain Sendiri</h3>
+            <p class="tl-sub">kel2.pallrzki.my.id</p>
+            <ol>
+              <li>Vercel → <strong>Settings → Domains</strong> → tambah <code>kel2.pallrzki.my.id</code>.</li>
+              <li>Di DNS <code>pallrzki.my.id</code> tambahkan record:</li>
+            </ol>
+            <div class="table-wrap"><table class="table mini-table">
+              <thead><tr><th>Type</th><th>Name</th><th>Value</th></tr></thead>
+              <tbody><tr><td>CNAME</td><td><code>kel2</code></td><td><code>cname.vercel-dns.com</code></td></tr></tbody>
+            </table></div>
+          </article>
+
+          <article class="tl-step" data-n="11">
+            <div class="tl-icon">📘</div>
+            <h3>Dokumentasi &amp; Presentasi</h3>
+            <p class="tl-sub">Tahap akhir</p>
+            <ul>
+              <li>Tulis <code>README.md</code> (cara pakai &amp; deploy).</li>
+              <li>Halaman <strong>Tentang</strong> ini sebagai dokumentasi.</li>
+              <li>Demo langsung: daftar wajah → absen → unduh CSV.</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <div class="quote">
+          "Ide → Riset → Setup → Prototipe Python → Desain UI → Coding web → Testing → GitHub → Vercel → Subdomain → Dokumentasi."
+        </div>
+
+        <div class="tech">
+          <h3>Teknologi yang dipakai</h3>
+          <div class="chips">
+            <span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">face-api.js</span><span class="chip">TensorFlow.js</span><span class="chip">MediaDevices API</span><span class="chip">Web Speech API</span><span class="chip">localStorage</span><span class="chip">Git &amp; GitHub</span><span class="chip">Vercel</span><span class="chip">VS Code</span><span class="chip">Python + OpenCV (prototipe)</span>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
       <span>© <span id="year"></span> Kelompok 1 · SMK Al Madani Garut</span>
-      <span class="muted"><a href="tentang.html" class="link">📘 Tentang Project</a> · kel2.pallrzki.my.id</span>
+      <span class="muted"><a href="#tentang" class="link">📘 Tentang Project</a> · kel2.pallrzki.my.id</span>
     </footer>
   </div>
 

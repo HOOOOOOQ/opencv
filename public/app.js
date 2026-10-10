@@ -220,7 +220,7 @@
   }
 
   // ------------------------------------------------------------ Routing
-  const PAGES = ['dashboard', 'daftar', 'absensi', 'kehadiran'];
+  const PAGES = ['dashboard', 'daftar', 'absensi', 'kehadiran', 'tentang'];
   function route() {
     let page = (location.hash || '#dashboard').slice(1);
     if (!PAGES.includes(page)) page = 'dashboard';
